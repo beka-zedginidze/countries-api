@@ -1,0 +1,32 @@
+<div class="containter">
+
+    <input type="text" value="georgia" placeholder="ძიება..."  class="search" [(ngModel)]='listFilter'>
+    <h1>მსოფლიო ქვეყნები</h1> <br>
+
+    <div class="countries"  *ngFor= "let country of filterdInfo" >
+        <img  [src]='country.flag'
+        [title]='country.name'
+        [style.width.px]='imageWidth'>
+        <ul >
+            <li><span>NAME</span> - {{ country.name }}</li>
+            <li><span>CIOC</span> - {{ country.cioc }}</li>
+            <li id="capital"><span>CAPITAL</span> -  {{country.capital}}</li>
+
+            <button (click)="onClick()" (click)="showMoreless()">Show {{ showMoreLess? "Less": "More" }}</button> 
+            <div *ngIf="moreInfo" class="details">
+                
+                <p id="details">DETAILS</p>
+                <li><span>Region- </span>{{ country.region }}</li>
+                <li><span>Subregion-</span>{{ country.subregion }}</li>
+                <li *ngFor="let language of country.languages"><span>Language-</span>{{ language.nativeName }}</li>
+                <li><span>Population-</span>{{ country.population }}</li>
+                <li><span>Demonym-</span>{{ country.demonym }}</li>
+                <li><span>Area-</span>{{ country.area }}</li>
+                <li id="timeZone"><span>Timezones-</span>{{ country.timezones }}</li>
+                <li><span>Domains-</span>{{ country.topLevelDomain }}</li>
+                <li><span>Calling Codes-</span>{{ country.callingCodes }}</li>
+
+            </div>     
+        </ul>
+    </div>
+</div>
